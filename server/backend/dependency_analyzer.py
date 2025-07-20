@@ -1,8 +1,8 @@
-import networkx as nx
+import networkx as nx   
 import matplotlib.pyplot as plt
 import io
 from collections import deque
-from typing import TypedDict, List
+from typing import TypedDict, List, Dict, Any
 
 class DependencyAnalyzer:
     """
@@ -96,24 +96,47 @@ class DependencyAnalyzer:
 
     def get_tasks_order(self, graph: nx.DiGraph, visualize: bool = False) ->  OrderResult | None:
         """
-        Calcula un orden válido del grafo dirigido.
+        Calcula un orden válido del grafo dirigido utilizando DFS para ordenación.
         Devuelve el orden como una lista, incluyendo tiempo total y tareas críticas,
         o None si no existe (por ciclos).
         """
-        try:
-            order = list(nx.topological_sort(graph))
-            
-            total_duration_minutes = 0
-            critical_tasks_count = 0
-            
-            for task_name in order:
-                # Acceder a los atributos del nodo 
-                task_data = graph.nodes[task_name]
-                total_duration_minutes += task_data.get('duration', 0) 
-                if task_data.get('priority') == "Crítica":
-                    critical_tasks_count += 1
-            
-            total_duration_hours = self._convert_minutes_to_hours(total_duration_minutes)            
-            return  {"order": order, "total_duration_hours":total_duration_hours, "critical_tasks_count":critical_tasks_count}
-        except nx.NetworkXUnfeasible:
-            return None
+        
+        if self.detect_cycles(graph):
+            return None # Si hay ciclos, no se puede obtener un orden específico
+
+        visited = set()
+        order_stack = deque() 
+
+        def dfs_sort_recursive(node):
+            visited.add(node)
+
+            # Explora todos los sucesores del nodo actual
+            for neighbor in graph.successors(node):
+                if neighbor not in visited:
+                    dfs_sort_recursive(neighbor)
+
+            # Una vez que todos los descendientes han sido visitados, añade el nodo a la pila
+            # (que al final se leerá al revés para obtener el orden)
+            order_stack.appendleft(node)
+
+        # Iterar sobre todos los nodos del grafo para asegurar que se visitan componentes desconectados
+        for node in graph.nodes():
+            if node not in visited:
+                dfs_sort_recursive(node)
+
+        # La pila contiene el orden. Convertirla a lista.
+        order = list(order_stack)
+
+        # Calcular métricas adicionales
+        total_duration_minutes = 0
+        critical_tasks_count = 0
+
+        for task_name in order:
+            task_data: Dict[str, Any] = graph.nodes[task_name] 
+            total_duration_minutes += task_data.get('duration', 0)
+            if task_data.get('priority') == "Crítica": 
+                critical_tasks_count += 1
+
+        total_duration_hours = self._convert_minutes_to_hours(total_duration_minutes)
+
+        return {"order": order, "total_duration_hours": total_duration_hours, "critical_tasks_count": critical_tasks_count}
