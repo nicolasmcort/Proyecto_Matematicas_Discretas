@@ -165,7 +165,7 @@ Durante la instalación, asegúrate de que la opción "Add Python to PATH" esté
 
 - Utiliza el siguiente comando con la URL real del repositorio de GitHub:
 ``` bash
-git clone https://github.com/nicolasmcort/Proyecto_Matematicas_Discretas_I.git
+git clone https://github.com/nicolasmcort/Proyecto_Matematicas_Discretas.git
 ```
 Esto descargará el código del proyecto a una nueva carpeta con el mismo nombre que el repositorio.
 <br><br>
