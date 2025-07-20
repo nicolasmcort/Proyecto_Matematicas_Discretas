@@ -4,8 +4,6 @@ import io
 from collections import deque
 from typing import TypedDict, List
 
-from graph_builder import GraphBuilder
-
 class DependencyAnalyzer:
     """
     Analiza el grafo de dependencias para detectar ciclos y establecer un orden válido de ejecución.
