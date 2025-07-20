@@ -213,8 +213,9 @@ npm run dev
 Esto iniciará el servidor de desarrollo en el puerto 8080 (o algún otro puerto disponible). Podrás acceder a la aplicación en el navegador escribiendo la URL http://localhost:8080, o por medio de la combinación de teclas `o` + `enter` en la terminal.
 <br><br>
 
-#### Nota:
-Asegúrate de que el backend se esté ejecutando antes de intentar acceder a la aplicación en el navegador.
+> [!IMPORTANT]
+> Asegúrate de que el backend se esté ejecutando antes de intentar acceder a la aplicación en el navegador.
+
 <br><br>
 
 ---
