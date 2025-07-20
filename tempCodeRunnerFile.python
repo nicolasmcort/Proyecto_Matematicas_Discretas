@@ -1,0 +1,27 @@
+def format_text_as_tree_branch(text):
+    """
+    Formatea un texto añadiendo '│    ' al inicio de cada línea.
+
+    Args:
+        text (str): El texto a formatear.
+
+    Returns:
+        str: El texto formateado con prefijos de rama de árbol.
+    """
+    lines = text.splitlines()  # Divide el texto en una lista de líneas
+    formatted_lines = []
+    for line in lines:
+        # Añade el prefijo a cada línea
+        formatted_lines.append("│   " + line)
+    
+    # Une las líneas de nuevo con saltos de línea
+    return "\n".join(formatted_lines)
+
+# Ejemplo de uso:
+input_text = """
+    api.ts
+"""
+
+output_text = format_text_as_tree_branch(input_text)
+print(output_text)
+
