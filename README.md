@@ -353,7 +353,6 @@ Principales tecnologías, frameworks y librerías utilizadas en el proyecto.
 
 
 <img src="https://media.tenor.com/JoUXoTf0_zAAAAAC/bart-simpson-los-simpson.gif" width="300" alt="Bart bailando :D">
-<br>
+<br><br>
 
-
-
+---
