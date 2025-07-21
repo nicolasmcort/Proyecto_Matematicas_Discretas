@@ -60,11 +60,15 @@ Desarrollar un sistema para optimizar la planificación de tareas que, a partir 
 
 ## 2. Principios de Matematicas Discretas
 
-- **Relaciones y sus propiedades (Ej. transitividad)**:
-- **Relaciones de orden**:
-- **Funciones (para asignar duraciones a tareas)**:
-- **Complejidad de algoritmos**:
-- **Grafos dirigidos**:
+- **Relaciones de orden parcial**: Una relación de orden parcial es una forma de organizar elementos en un conjunto que cumple con tres condiciones principales. Es reflexiva (todo elemento se relaciona consigo mismo), antisimétrica (si A se relaciona con B y B con A, entonces A y B son el mismo elemento), y transitiva (si A se relaciona con B y B con C, entonces A se relaciona con C). Se diferencia de una relación de orden total en que puede haber elementos que no se pueden comparar entre sí (por ejemplo, en el conjunto de tareas, una tarea puede no depender de otra ni viceversa, siendo independientes). Mientras que en un orden total, todos los pares de elementos son comparables, como ocurre con los números reales.
+  
+- **Funciones (para asignar duraciones y otras características a tareas)**: Las funciones son importantes en el modelado de las tareas dentro del sistema, actuando como mapeos que asocian cada tarea (elemento de un conjunto de entrada) con una o varias de sus características (elementos de un conjunto de salida). Por ejemplo, existen funciones que asignan una duración específica a cada tarea (ej., f(tarea A)=5 horas), o una prioridad (ej., g(tarea B)=Crítica). De manera similar, las dependencias entre tareas pueden verse como una función que asigna a cada tarea un conjunto de tareas de las que depende.
+  
+- **Complejidad de algoritmos**: Para asegurar la eficiencia del sistema, especialmente con un gran número de tareas, es crucial analizar la complejidad de los algoritmos utilizados. Las dependencias entre tareas, que son relaciones (una tarea depende de otra), pueden ser representadas de diversas maneras. Una de ellas es a través de matrices de adyacencia, donde cada entrada Mij indica si existe una dependencia directa de la tarea i a la tarea j. Inicialmente, se consideró el enfoque de utilizar la multiplicación de estas matrices de adyacencia para detectar ciclos, ya que las potencias de estas revelan la existencia de caminos de cierta longitud. Sin embargo, se determinó que este método eleva la complejidad algorítmica a O(V^3), donde V es el número de vértices (tareas), lo que resulta impráctico para grafos de gran tamaño. Por ello, se optó por implementar un algoritmo DFS (Búsqueda en Profundidad), que opera directamente sobre la estructura del grafo dirigido (que es la representación más natural de estas relaciones de dependencia). El DFS tiene una complejidad significativamente menor, de O(V+E) (donde E es el número de aristas o dependencias), asegurando así un rendimiento óptimo y escalable del sistema para la detección de ciclos. Es un algoritmo que explora un grafo o un árbol yendo lo más profundo posible por cada rama antes de retroceder, y usa una pila para recordar qué caminos aún no ha explorado.
+  
+- **Grafos dirigidos**: El centro del sistema es la representación de tareas y sus dependencias como un grafo dirigido. Cada tarea es un nodo y cada dependencia es una arista dirigida. Esta estructura de datos es crucial para la visualización de relaciones, aplicar algoritmos de recorrido (como DFS) para la detección de ciclos y encontrar posibles rutas de ejecución del proyecto.
+  
+- **Ciclos**: Un ciclo en un grafo es un camino que comienza y termina en el mismo vértice, pasando por otros vértices intermedios sin repetir ninguna arista.
 <br><br>
 
 ---
@@ -165,7 +169,7 @@ Durante la instalación, asegúrate de que la opción "Add Python to PATH" esté
 
 - Utiliza el siguiente comando con la URL real del repositorio de GitHub:
 ``` bash
-git clone https://github.com/nicolasmcort/Proyecto_Matematicas_Discretas.git
+git clone https://github.com/nicolasmcort/Proyecto_Matematicas_Discretas_I.git
 ```
 Esto descargará el código del proyecto a una nueva carpeta con el mismo nombre que el repositorio.
 <br><br>
@@ -213,9 +217,8 @@ npm run dev
 Esto iniciará el servidor de desarrollo en el puerto 8080 (o algún otro puerto disponible). Podrás acceder a la aplicación en el navegador escribiendo la URL http://localhost:8080, o por medio de la combinación de teclas `o` + `enter` en la terminal.
 <br><br>
 
-> [!IMPORTANT]
-> Asegúrate de que el backend se esté ejecutando antes de intentar acceder a la aplicación en el navegador.
-
+#### Nota:
+Asegúrate de que el backend se esté ejecutando antes de intentar acceder a la aplicación en el navegador.
 <br><br>
 
 ---
@@ -345,14 +348,23 @@ Principales tecnologías, frameworks y librerías utilizadas en el proyecto.
 - Se aplicaron con éxito principios fundamentales de matemáticas discretas y propiedades inherentes de los grafos para la identificación efectiva de rutas de ejecución y dependencias cíclicas.
 <br><br>
 
----
 
+---
 ## 10. Referencias
 
-// TODO
-
-
-<img src="https://media.tenor.com/JoUXoTf0_zAAAAAC/bart-simpson-los-simpson.gif" width="300" alt="Bart bailando :D">
-<br><br>
+- Bohórquez Villamizar, J. A. (2012). *Lógica y matemáticas discretas en la informática*. Escuela Colombiana de Ingeniería.
+- Coto, E. (2003). *Algoritmos Básicos de Grafos* (ND 2003-02). Universidad Central de Venezuela, Facultad de Ciencias, Escuela de Computación, Laboratorio de Computación Gráfica. [https://d1wqtxts1xzle7.cloudfront.net/40820165/CotoND200302-libre.pdf](https://d1wqtxts1xzle7.cloudfront.net/40820165/CotoND200302-libre.pdf). Consultado el 17 de julio de 2025.
+- Grossman S., S. I., & Flores Godoy, J. J. (2019). *Álgebra Lineal* (8va ed.). McGraw Hill.
+- Brodersen, P. J. N. (2023). Netgraph: Publication-quality Network Visualisations in Python. *The Journal of Open Source Software*, *8*(88), 5372. https://doi.org/10.21105/joss.05372. Consultado el 17 de julio de 2025.
+- "Aplicaciones en Informática." *Ciencia Sin Límites*, s.f. [https://cienciasinlimites.org/grafos/#Aplicaciones_en_Informatica](https://cienciasinlimites.org/grafos/#Aplicaciones_en_Informatica). Consultado el 16 de julio de 2025.
+- "Grafo Dirigido." *AcademiaLab*, s.f. [https://academia-lab.com/enciclopedia/grafo-dirigido/](https://academia-lab.com/enciclopedia/grafo-dirigido/). Consultado el 16 de julio de 2025.
+- "Depth-First Search in Python." *DataCamp*, s.f. [https://www.datacamp.com/es/tutorial/depth-first-search-in-python](https://www.datacamp.com/es/tutorial/depth-first-search-in-python). Consultado el 16 de julio de 2025.
+- "Búsqueda en Profundidad." *AcademiaLab*, s.f. [https://academia-lab.com/enciclopedia/busqueda-en-profundidad/](https://academia-lab.com/enciclopedia/busqueda-en-profundidad/). Consultado el 16 de julio de 2025.
 
 ---
+
+<img src="https://media.tenor.com/JoUXoTf0_zAAAAAC/bart-simpson-los-simpson.gif" width="300" alt="Bart bailando :D">
+<br>
+
+
+
