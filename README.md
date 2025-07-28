@@ -28,7 +28,7 @@ Docente: Arles Ernesto Rodríguez Portela
 - [2. Principios de Matemáticas Discretas](#2-principios-de-matematicas-discretas)
 - [3. Estructura del Proyecto](#3-estructura-del-proyecto)
 - [4. Requisitos de Instalación](#4-requisitos-de-instalación)
-  - [4.1 Instalación Manual (sin Docker)](#41-instalación-manual-(sin-docker))
+  - [4.1 Instalación Manual sin Docker](#41-instalación-manual-sin-docker)
   - [4.2 Instalación con Docker](#42-instalación-con-docker)
 - [5. Ejecución Local](#5-ejecución-local)
 - [6. Instrucciones de Uso](#6-instrucciones-de-uso)
@@ -156,7 +156,7 @@ C:.
 
 ## 4. Requisitos de Instalación
 
-#### 4.1 Instalación Manual (sin Docker)
+#### 4.1 Instalación Manual sin Docker
 ##### Requisitos Generales:
 - Git (2.25 o superior): Git es un sistema de control de versiones que se utiliza para gestionar el código del proyecto. Puedes descargarlo e instalarlo desde este enlace: https://git-scm.com/downloads.
 
