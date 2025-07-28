@@ -228,7 +228,8 @@ La primera vez que ejecutes este comando, Docker construirá las imágenes neces
 
 ## 5. Ejecución Local
 
-#### Backend:
+#### Sin Docker:
+#### Backend
 - Abre una terminal en el directorio `server/backend` y ejecuta el siguiente comando:
 ``` bash
 uvicorn api:app 
@@ -236,7 +237,7 @@ uvicorn api:app
 Uvicorn iniciará el servidor y este permanecerá en funcionamiento hasta que lo detengas manualmente (por ejemplo, con `Ctrl+C` en la terminal). 
 <br><br>
 
-#### Frontend:
+#### Frontend
 - Abre otra terminal diferente, navega al directorio `/client` y ejecuta el siguiente comando:
 ``` bash
 npm run dev
