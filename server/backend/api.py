@@ -11,10 +11,12 @@ from task import Task
 
 app = FastAPI()
 
-origins = [
-    "http://localhost",
-    "http://localhost:8080",
-    "http://127.0.0.1:8080",
+origins = [  
+    "http://localhost",  
+    # "http://localhost:8080",   # Líneas para servidor de desarrollo de Vite 
+    # "http://127.0.0.1:8080",   # (puerto 8080) para desarrollo local sin Docker
+    "http://localhost:3000",  
+    "http://frontend:80",     
 ]
 
 app.add_middleware(
