@@ -28,6 +28,8 @@ Docente: Arles Ernesto Rodríguez Portela
 - [2. Principios de Matemáticas Discretas](#2-principios-de-matematicas-discretas)
 - [3. Estructura del Proyecto](#3-estructura-del-proyecto)
 - [4. Requisitos de Instalación](#4-requisitos-de-instalación)
+  - [4.1 Instalación Manual (sin Docker)](#41-instalación-manual-(sin-docker))
+  - [4.2 Instalación con Docker](#42-instalación-con-docker)
 - [5. Ejecución Local](#5-ejecución-local)
 - [6. Instrucciones de Uso](#6-instrucciones-de-uso)
 - [7. Ejemplos de Uso](#7-ejemplos-de-uso)
@@ -154,7 +156,8 @@ C:.
 
 ## 4. Requisitos de Instalación
 
-#### Requisitos Generales:
+#### 4.1 Instalación Manual (sin Docker)
+##### Requisitos Generales:
 - Git (2.25 o superior): Git es un sistema de control de versiones que se utiliza para gestionar el código del proyecto. Puedes descargarlo e instalarlo desde este enlace: https://git-scm.com/downloads.
 
 - Node.js (18 o superior): Node.js es un entorno de ejecución de JavaScript que se utiliza para ejecutar el frontend (interfaz de usuario) del proyecto. Puedes descargarlo e instalarlo desde este enlace: https://nodejs.org/en/download/.
@@ -164,17 +167,17 @@ Durante la instalación, asegúrate de que la opción "Add to PATH" esté selecc
 Durante la instalación, asegúrate de que la opción "Add Python to PATH" esté seleccionada. Esto permitirá que puedas ejecutar comandos de Python desde la terminal.
 <br><br>
 
-#### Descargar el Código del Proyecto desde GitHub:
+##### Descargar el Código del Proyecto desde GitHub:
 - Abre la línea de comandos (o terminal) y navega al directorio donde quieres guardar el proyecto. 
 
 - Utiliza el siguiente comando con la URL real del repositorio de GitHub:
 ``` bash
-git clone https://github.com/nicolasmcort/Proyecto_Matematicas_Discretas_I.git
+git clone https://github.com/nicolasmcort/Proyecto_Matematicas_Discretas.git
 ```
 Esto descargará el código del proyecto a una nueva carpeta con el mismo nombre que el repositorio.
 <br><br>
 
-#### Frontend:
+##### Frontend:
 - Abre una terminal en el directorio `/client` y ejecuta el siguiente comando:
 ``` bash
 npm install
@@ -182,7 +185,7 @@ npm install
 Esto instalará todas las dependencias del frontend especificadas en el archivo `package.json`.
 <br><br>
 
-#### Backend:
+##### Backend:
 - Crea un entorno virtual para aislar las dependencias del backend. Puedes utilizar `venv` o `virtualenv`.
 ``` bash
 python3 -m venv venv  # Crea el entorno virtual
@@ -195,6 +198,30 @@ Es recomendable utilizar un entorno virtual para evitar conflictos con otras ver
 pip install -r requirements.txt
 ```
 Esto instalará todas las dependencias del backend especificadas en el archivo `requirements.txt`.
+<br><br>
+
+#### 4.2 Instalación con Docker
+##### Requisitos Generales:
+- Git (2.25 o superior): Git es un sistema de control de versiones que se utiliza para gestionar el código del proyecto. Puedes descargarlo e instalarlo desde este enlace: https://git-scm.com/downloads.
+
+- Docker Desktop (20.10 o superior): Docker es una plataforma de containerización que permite empaquetar aplicaciones y sus dependencias en contenedores ligeros y portables. Esto garantiza que tu aplicación funcione de manera consistente en cualquier entorno, independientemente del sistema operativo o configuraciones locales. Puedes descargarlo e instalarlo desde este enlace: https://www.docker.com/products/docker-desktop/
+  
+##### Descargar el Código del Proyecto desde GitHub:
+- Abre la línea de comandos (o terminal) y navega al directorio donde quieres guardar el proyecto. 
+
+- Utiliza el siguiente comando con la URL real del repositorio de GitHub:
+``` bash
+git clone https://github.com/nicolasmcort/Proyecto_Matematicas_Discretas.git
+```
+Esto descargará el código del proyecto a una nueva carpeta con el mismo nombre que el repositorio.
+<br><br>
+
+##### Usar Docker:
+- Abre una terminal en el directorio donde clonaste el repositorio y ejecuta el comando:
+``` bash
+docker-compose up --build
+```
+La primera vez que ejecutes este comando, Docker construirá las imágenes necesarias.
 <br><br>
 
 ---
@@ -217,9 +244,16 @@ npm run dev
 Esto iniciará el servidor de desarrollo en el puerto 8080 (o algún otro puerto disponible). Podrás acceder a la aplicación en el navegador escribiendo la URL http://localhost:8080, o por medio de la combinación de teclas `o` + `enter` en la terminal.
 <br><br>
 
-#### Nota:
-Asegúrate de que el backend se esté ejecutando antes de intentar acceder a la aplicación en el navegador.
+> [!NOTE]
+> Asegúrate de que el backend se esté ejecutando antes de intentar acceder a la aplicación en el navegador.
 <br><br>
+
+#### Mediante Docker:
+- Abre la aplicación `Docker Desktop`.
+- Busca la sección `Containers`.
+- Haz click en el botón `►` para empezar a correr el contenedor.
+- Cuando desees detenerlo, oprime el mismo botón (el cual habrá cambiado a `⏹`).
+br><br>
 
 ---
 
